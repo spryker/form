@@ -5,27 +5,29 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Spryker\Shared\Form\Plugin\Form;
+namespace Spryker\Zed\Form\Communication\Plugin\Form;
 
 use Spryker\Service\Container\ContainerInterface;
 use Spryker\Shared\Form\DoubleSubmitProtection\DoubleSubmitProtectionExtension;
 use Spryker\Shared\Form\DoubleSubmitProtection\RequestTokenProvider\SessionStorage;
 use Spryker\Shared\Form\DoubleSubmitProtection\RequestTokenProvider\StorageInterface;
-use Spryker\Shared\Form\DoubleSubmitProtection\RequestTokenProvider\TokenGeneratorInterface;
-use Spryker\Shared\Form\DoubleSubmitProtection\RequestTokenProvider\TokenHashGenerator;
 use Spryker\Shared\FormExtension\Dependency\Plugin\FormPluginInterface;
+use Spryker\Zed\Kernel\Communication\AbstractPlugin;
 use Symfony\Component\Form\FormFactoryBuilderInterface;
 use Symfony\Component\Translation\TranslatorInterface;
 
-class DoubleSubmitProtectionFormPlugin implements FormPluginInterface
+/**
+ * @method \Spryker\Zed\Form\Communication\FormCommunicationFactory getFactory()
+ * @method \Spryker\Zed\Form\FormConfig getConfig()
+ */
+class DoubleSubmitProtectionFormPlugin extends AbstractPlugin implements FormPluginInterface
 {
     protected const SERVICE_SESSION = 'session';
     protected const SERVICE_TRANSLATOR = 'translator';
 
     /**
      * {@inheritdoc}
-     * - Adds DoubleSubmitProtection extension.
-     * - Prevents forms from getting submitted twice.
+     * - Adds `Spryker\Shared\Form\DoubleSubmitProtection\DoubleSubmitProtectionExtension`.
      *
      * @api
      *
@@ -51,18 +53,10 @@ class DoubleSubmitProtectionFormPlugin implements FormPluginInterface
     protected function createDoubleSubmitProtectionExtension(ContainerInterface $container): DoubleSubmitProtectionExtension
     {
         return new DoubleSubmitProtectionExtension(
-            $this->createTokenGenerator(),
+            $this->getFactory()->createTokenGenerator(),
             $this->createTokenStorage($container),
             $this->getTranslatorService($container)
         );
-    }
-
-    /**
-     * @return \Spryker\Shared\Form\DoubleSubmitProtection\RequestTokenProvider\TokenGeneratorInterface
-     */
-    protected function createTokenGenerator(): TokenGeneratorInterface
-    {
-        return new TokenHashGenerator();
     }
 
     /**
