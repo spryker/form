@@ -52,14 +52,6 @@ class FormEventSubscriber implements EventSubscriberInterface
      */
     protected $translationOptions = [];
 
-    /**
-     * @param \Spryker\Shared\Form\DoubleSubmitProtection\RequestTokenProvider\TokenGeneratorInterface $generator
-     * @param \Spryker\Shared\Form\DoubleSubmitProtection\RequestTokenProvider\StorageInterface $storage
-     * @param string $fieldName
-     * @param string $errorMessage
-     * @param \Symfony\Contracts\Translation\TranslatorInterface|null $translator
-     * @param string|null $translationDomain
-     */
     public function __construct(
         TokenGeneratorInterface $generator,
         StorageInterface $storage,
@@ -86,11 +78,6 @@ class FormEventSubscriber implements EventSubscriberInterface
         ];
     }
 
-    /**
-     * @param \Symfony\Component\Form\FormEvent $event
-     *
-     * @return void
-     */
     public function validateToken(FormEvent $event): void
     {
         $form = $event->getForm();
@@ -147,9 +134,6 @@ class FormEventSubscriber implements EventSubscriberInterface
             $this->tokenGenerator->checkTokenEquals($expectedToken, $givenToken);
     }
 
-    /**
-     * @return string
-     */
     protected function getTranslatedErrorMessage(): string
     {
         $errorMessage = $this->errorMessage;

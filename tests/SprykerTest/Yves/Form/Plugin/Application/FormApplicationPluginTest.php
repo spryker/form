@@ -48,9 +48,6 @@ class FormApplicationPluginTest extends Unit
      */
     protected $tester;
 
-    /**
-     * @return void
-     */
     public function testFormApplicationPluginSetFormFactoryService(): void
     {
         //Arrange
@@ -65,9 +62,6 @@ class FormApplicationPluginTest extends Unit
         $this->assertInstanceOf(FormFactoryInterface::class, $container->get(static::SERVICE_FORM_FACTORY));
     }
 
-    /**
-     * @return void
-     */
     public function testFormApplicationSetFormFactoryServiceAlias(): void
     {
         //Arrange
@@ -82,9 +76,6 @@ class FormApplicationPluginTest extends Unit
         $this->assertInstanceOf(FormFactoryInterface::class, $container->get(static::SERVICE_FORM_FACTORY_ALIAS));
     }
 
-    /**
-     * @return void
-     */
     public function testFormApplicationSetCsrfProvider(): void
     {
         //Arrange

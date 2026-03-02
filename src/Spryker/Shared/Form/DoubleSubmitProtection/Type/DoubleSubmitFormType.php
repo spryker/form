@@ -66,12 +66,6 @@ class DoubleSubmitFormType extends AbstractTypeExtension
      */
     protected $translationDomain;
 
-    /**
-     * @param \Spryker\Shared\Form\DoubleSubmitProtection\RequestTokenProvider\TokenGeneratorInterface $tokenGenerator
-     * @param \Spryker\Shared\Form\DoubleSubmitProtection\RequestTokenProvider\StorageInterface $storage
-     * @param \Symfony\Contracts\Translation\TranslatorInterface|null $translator
-     * @param string|null $translationDomain
-     */
     public function __construct(
         TokenGeneratorInterface $tokenGenerator,
         StorageInterface $storage,
@@ -126,11 +120,6 @@ class DoubleSubmitFormType extends AbstractTypeExtension
         $view->children[$fieldName] = $tokenForm->createView($view);
     }
 
-    /**
-     * @param \Symfony\Component\OptionsResolver\OptionsResolver $resolver
-     *
-     * @return void
-     */
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
@@ -139,9 +128,6 @@ class DoubleSubmitFormType extends AbstractTypeExtension
         ]);
     }
 
-    /**
-     * @return string
-     */
     public function getExtendedType(): string
     {
         return FormType::class;
@@ -155,9 +141,6 @@ class DoubleSubmitFormType extends AbstractTypeExtension
         return [FormType::class];
     }
 
-    /**
-     * @return \Spryker\Shared\Form\DoubleSubmitProtection\Subscriber\FormEventSubscriber
-     */
     protected function createFormEventSubscriber(): FormEventSubscriber
     {
         return new FormEventSubscriber(

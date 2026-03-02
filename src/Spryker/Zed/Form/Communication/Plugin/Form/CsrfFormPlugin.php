@@ -54,11 +54,6 @@ class CsrfFormPlugin extends AbstractPlugin implements FormPluginInterface
         return $formFactoryBuilder;
     }
 
-    /**
-     * @param \Spryker\Service\Container\ContainerInterface $container
-     *
-     * @return \Symfony\Component\Form\Extension\Csrf\CsrfExtension
-     */
     protected function createCsrfExtension(ContainerInterface $container): CsrfExtension
     {
         return new CsrfExtension(
@@ -67,11 +62,6 @@ class CsrfFormPlugin extends AbstractPlugin implements FormPluginInterface
         );
     }
 
-    /**
-     * @param \Spryker\Service\Container\ContainerInterface $container
-     *
-     * @return \Symfony\Contracts\Translation\TranslatorInterface|null
-     */
     protected function getTranslator(ContainerInterface $container): ?TranslatorInterface
     {
         return $container->has(static::SERVICE_TRANSLATOR) ? $container->get(static::SERVICE_TRANSLATOR) : null;

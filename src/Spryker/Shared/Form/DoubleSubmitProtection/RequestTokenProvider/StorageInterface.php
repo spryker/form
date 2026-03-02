@@ -9,25 +9,9 @@ namespace Spryker\Shared\Form\DoubleSubmitProtection\RequestTokenProvider;
 
 interface StorageInterface
 {
-    /**
-     * @param string $formName
-     *
-     * @return string|null
-     */
     public function getToken(string $formName): ?string;
 
-    /**
-     * @param string $formName
-     *
-     * @return void
-     */
     public function deleteToken(string $formName): void;
 
-    /**
-     * @param string $formName
-     * @param string $token
-     *
-     * @return void
-     */
     public function setToken(string $formName, string $token): void;
 }

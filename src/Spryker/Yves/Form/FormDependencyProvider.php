@@ -20,11 +20,6 @@ class FormDependencyProvider extends AbstractBundleDependencyProvider
      */
     public const PLUGINS_FORM = 'PLUGINS_FORM';
 
-    /**
-     * @param \Spryker\Yves\Kernel\Container $container
-     *
-     * @return \Spryker\Yves\Kernel\Container
-     */
     public function provideDependencies(Container $container): Container
     {
         $container = $this->addFormPlugins($container);
@@ -32,11 +27,6 @@ class FormDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Yves\Kernel\Container $container
-     *
-     * @return \Spryker\Yves\Kernel\Container
-     */
     protected function addFormPlugins(Container $container): Container
     {
         $container->set(static::PLUGINS_FORM, function () {

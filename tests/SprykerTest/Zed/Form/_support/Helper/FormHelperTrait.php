@@ -11,9 +11,6 @@ use Codeception\Module;
 
 trait FormHelperTrait
 {
-    /**
-     * @return \SprykerTest\Zed\Form\Helper\FormHelper
-     */
     protected function getFormHelper(): FormHelper
     {
         /** @var \SprykerTest\Zed\Form\Helper\FormHelper $formHelper */
@@ -22,10 +19,5 @@ trait FormHelperTrait
         return $formHelper;
     }
 
-    /**
-     * @param string $name
-     *
-     * @return \Codeception\Module
-     */
     abstract protected function getModule(string $name): Module;
 }

@@ -56,11 +56,6 @@ class DoubleSubmitProtectionFormPlugin extends AbstractPlugin implements FormPlu
         return $formFactoryBuilder;
     }
 
-    /**
-     * @param \Spryker\Service\Container\ContainerInterface $container
-     *
-     * @return \Spryker\Shared\Form\DoubleSubmitProtection\DoubleSubmitProtectionExtension
-     */
     protected function createDoubleSubmitProtectionExtension(ContainerInterface $container): DoubleSubmitProtectionExtension
     {
         return new DoubleSubmitProtectionExtension(
@@ -80,11 +75,6 @@ class DoubleSubmitProtectionFormPlugin extends AbstractPlugin implements FormPlu
         return new SessionStorage($container->get(static::SERVICE_SESSION));
     }
 
-    /**
-     * @param \Spryker\Service\Container\ContainerInterface $container
-     *
-     * @return \Symfony\Contracts\Translation\TranslatorInterface|null
-     */
     protected function getTranslatorService(ContainerInterface $container): ?TranslatorInterface
     {
         return $container->has(static::SERVICE_TRANSLATOR) ? $container->get(static::SERVICE_TRANSLATOR) : null;

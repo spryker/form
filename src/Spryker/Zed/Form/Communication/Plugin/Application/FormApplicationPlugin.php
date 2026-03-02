@@ -65,11 +65,6 @@ class FormApplicationPlugin extends AbstractPlugin implements ApplicationPluginI
         return $container;
     }
 
-    /**
-     * @param \Spryker\Service\Container\ContainerInterface $container
-     *
-     * @return \Spryker\Service\Container\ContainerInterface
-     */
     protected function addFormFactory(ContainerInterface $container): ContainerInterface
     {
         $container->set(static::SERVICE_FORM_FACTORY, function () use ($container) {
@@ -86,11 +81,6 @@ class FormApplicationPlugin extends AbstractPlugin implements ApplicationPluginI
         return $container;
     }
 
-    /**
-     * @param \Spryker\Service\Container\ContainerInterface $container
-     *
-     * @return \Spryker\Service\Container\ContainerInterface
-     */
     protected function addFormCsrfProvider(ContainerInterface $container): ContainerInterface
     {
         $container->set(static::SERVICE_FORM_CSRF_PROVIDER, function (ContainerInterface $container) {
@@ -100,11 +90,6 @@ class FormApplicationPlugin extends AbstractPlugin implements ApplicationPluginI
         return $container;
     }
 
-    /**
-     * @param \Spryker\Service\Container\ContainerInterface $container
-     *
-     * @return \Symfony\Component\Security\Csrf\CsrfTokenManagerInterface
-     */
     protected function createCsrfTokenManager(ContainerInterface $container): CsrfTokenManagerInterface
     {
         return new CsrfTokenManager(
@@ -113,11 +98,6 @@ class FormApplicationPlugin extends AbstractPlugin implements ApplicationPluginI
         );
     }
 
-    /**
-     * @param \Spryker\Service\Container\ContainerInterface $container
-     *
-     * @return \Symfony\Component\Security\Csrf\TokenStorage\ClearableTokenStorageInterface
-     */
     protected function createTokenStorage(ContainerInterface $container): ClearableTokenStorageInterface
     {
         if ($container->has(static::SERVICE_SESSION)) {
@@ -127,12 +107,6 @@ class FormApplicationPlugin extends AbstractPlugin implements ApplicationPluginI
         return $this->getFactory()->createDefaultTokenStorage();
     }
 
-    /**
-     * @param \Symfony\Component\Form\FormFactoryBuilderInterface $formFactoryBuilder
-     * @param \Spryker\Service\Container\ContainerInterface $container
-     *
-     * @return \Symfony\Component\Form\FormFactoryBuilderInterface
-     */
     protected function extendForm(FormFactoryBuilderInterface $formFactoryBuilder, ContainerInterface $container): FormFactoryBuilderInterface
     {
         foreach ($this->getFactory()->getFormPlugins() as $formPlugin) {
@@ -142,11 +116,6 @@ class FormApplicationPlugin extends AbstractPlugin implements ApplicationPluginI
         return $formFactoryBuilder;
     }
 
-    /**
-     * @param \Symfony\Component\HttpFoundation\Session\SessionInterface $session
-     *
-     * @return \Symfony\Component\Security\Csrf\TokenStorage\ClearableTokenStorageInterface
-     */
     protected function createSessionTokenStorage(SessionInterface $session): ClearableTokenStorageInterface
     {
         $request = new Request();

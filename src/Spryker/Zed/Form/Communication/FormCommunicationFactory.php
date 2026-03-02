@@ -21,25 +21,16 @@ use Symfony\Component\Security\Csrf\TokenStorage\NativeSessionTokenStorage;
  */
 class FormCommunicationFactory extends AbstractCommunicationFactory
 {
-    /**
-     * @return \Symfony\Component\Form\FormFactoryBuilderInterface
-     */
     public function createFormFactoryBuilder(): FormFactoryBuilderInterface
     {
         return new FormFactoryBuilder();
     }
 
-    /**
-     * @return \Spryker\Shared\Form\DoubleSubmitProtection\RequestTokenProvider\TokenGeneratorInterface
-     */
     public function createTokenGenerator(): TokenGeneratorInterface
     {
         return new TokenHashGenerator();
     }
 
-    /**
-     * @return \Symfony\Component\Security\Csrf\TokenStorage\ClearableTokenStorageInterface
-     */
     public function createDefaultTokenStorage(): ClearableTokenStorageInterface
     {
         return new NativeSessionTokenStorage();

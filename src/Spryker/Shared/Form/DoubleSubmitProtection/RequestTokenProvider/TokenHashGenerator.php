@@ -14,28 +14,16 @@ class TokenHashGenerator implements TokenGeneratorInterface
      */
     protected $algorithm;
 
-    /**
-     * @param string $algorithm
-     */
     public function __construct(string $algorithm = self::DEFAULT_ALGORITHM)
     {
         $this->algorithm = $algorithm;
     }
 
-    /**
-     * @return string
-     */
     public function generateToken(): string
     {
         return hash($this->algorithm, microtime() . mt_rand());
     }
 
-    /**
-     * @param string $expected
-     * @param string $actual
-     *
-     * @return bool
-     */
     public function checkTokenEquals(string $expected, string $actual): bool
     {
         return hash_equals($expected, $actual);

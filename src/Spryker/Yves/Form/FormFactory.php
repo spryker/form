@@ -18,17 +18,11 @@ use Symfony\Component\Security\Csrf\TokenStorage\NativeSessionTokenStorage;
  */
 class FormFactory extends AbstractFactory
 {
-    /**
-     * @return \Symfony\Component\Form\FormFactoryBuilderInterface
-     */
     public function createFormFactoryBuilder(): FormFactoryBuilderInterface
     {
         return new FormFactoryBuilder();
     }
 
-    /**
-     * @return \Symfony\Component\Security\Csrf\TokenStorage\ClearableTokenStorageInterface
-     */
     public function createDefaultTokenStorage(): ClearableTokenStorageInterface
     {
         return new NativeSessionTokenStorage();

@@ -48,9 +48,6 @@ class FormHelper extends Module
      */
     protected $formPlugins = [];
 
-    /**
-     * @return void
-     */
     public function _initialize(): void
     {
         foreach ($this->config[static::CONFIG_KEY_FORM_PLUGINS] as $formPlugin) {
@@ -58,9 +55,6 @@ class FormHelper extends Module
         }
     }
 
-    /**
-     * @return void
-     */
     protected function setDefaultConfig(): void
     {
         $this->config = [
@@ -68,19 +62,11 @@ class FormHelper extends Module
         ];
     }
 
-    /**
-     * @return void
-     */
     protected function addDependencies(): void
     {
         $this->getDependencyProviderHelper()->setDependency(FormDependencyProvider::PLUGINS_FORM, $this->formPlugins);
     }
 
-    /**
-     * @param \Codeception\TestInterface $test
-     *
-     * @return void
-     */
     public function _before(TestInterface $test): void
     {
         parent::_before($test);
@@ -110,9 +96,6 @@ class FormHelper extends Module
         return $formApplicationPlugin;
     }
 
-    /**
-     * @return \Spryker\Zed\Form\Communication\FormCommunicationFactory
-     */
     protected function getFactory(): FormCommunicationFactory
     {
         /** @var \Spryker\Zed\Form\Communication\FormCommunicationFactory $formCommunicationFactory */
@@ -121,9 +104,6 @@ class FormHelper extends Module
         return $formCommunicationFactory;
     }
 
-    /**
-     * @return \Spryker\Zed\Form\FormConfig
-     */
     protected function getConfig(): FormConfig
     {
         /** @var \Spryker\Zed\Form\FormConfig $formConfig */
