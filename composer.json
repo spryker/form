@@ -11,8 +11,10 @@
         "spryker/symfony": "^3.5.0"
     },
     "require-dev": {
+        "spryker/application": "*",
         "spryker/code-sniffer": "*",
         "spryker/container": "*",
+        "spryker/event-dispatcher": "*",
         "spryker/testify": "*"
     },
     "suggest": {
